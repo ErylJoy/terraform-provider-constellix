@@ -139,6 +139,11 @@ func datasourceConstellixARecord() *schema.Resource {
 							Optional: true,
 							Computed: true,
 						},
+						"checkId": &schema.Schema{
+							Type:     schema.TypeInt,
+							Optional: true,
+							Computed: true,
+						},
 					},
 				},
 				Optional: true,
@@ -265,7 +270,7 @@ func datasourceConstellixARecordRead(d *schema.ResourceData, m interface{}) erro
 				map1["value"] = fmt.Sprintf("%v", val1["value"])
 				map1["sort_order"] = fmt.Sprintf("%v", val1["sortOrder"])
 				map1["disable_flag"] = fmt.Sprintf("%v", val1["disableFlag"])
-
+				map1["checkId"] = int(val1["checkId"].(float64))
 				rrflist = append(rrflist, map1)
 			}
 
